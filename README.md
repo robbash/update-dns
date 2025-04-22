@@ -24,6 +24,12 @@
 
 Beautify the response payload and look for the specific record id.
 
+## Testing
+
+Create a `.env` file and run the following command:
+
+    docker run --rm --env-file .env robbash/update-dns
+
 ## Helm
 
 Copy and update the file `helm/secrets-home-example-com.yaml` to your needs.
@@ -35,3 +41,7 @@ Copy and update the file `helm/secrets-home-example-com.yaml` to your needs.
     helm install update-dns-home-your-domain update-dns --set secretName=home-your-domain-secret
 
 Be aware that all script create the kubes components in namespace `jobs`. Update if needed.
+
+## Building the docker image yourself
+
+    docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 --push -t yourname/update-dns .

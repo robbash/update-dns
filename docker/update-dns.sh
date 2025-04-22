@@ -16,7 +16,7 @@ if [ -z "${ZONE_ID}" ] || [ -z "${RECORD_ID}" ] || [ -z "${RECORD_NAME}" ] || [ 
     exit 1
 fi
 
-ip=$(curl -s http://ipv4.icanhazip.com)
+ip=$(curl -s https://ipv4.icanhazip.com)
 
 request="curl -s -X PUT \"https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$RECORD_ID\" \
     -H \"Authorization: Bearer $AUTH_TOKEN\" \
