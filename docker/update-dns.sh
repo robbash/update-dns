@@ -18,6 +18,13 @@ fi
 
 ip=$(curl -s https://ipv4.icanhazip.com)
 
+if [ -z "$ip" ]; then
+    echo "IP could not be retrieved... Exit"
+    exit 1
+fi
+
+echo "Current IP is ${ip}"
+
 request="curl -s -X PUT \"https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$RECORD_ID\" \
     -H \"Authorization: Bearer $AUTH_TOKEN\" \
     -H \"Content-Type: application/json\" \
